@@ -107,6 +107,12 @@ def api_edit(movie_id) -> str:
 
 @app.route('/api/v1/movies/', methods=['POST'])
 def api_add() -> str:
+    content = request.json
+    cursor = mysql.get_db().cursor()
+    input_data = (content['fldTitle'], content['fldYear'], content['fldScore'], movie_id)
+    sql_insert_query = """INSERT INTO deniroMovies (Title, Year, Score) VALUES (%s, %s, %s)"""
+    cursor.execute(sql_insert_query, input_data)
+    mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')
     return resp
 
