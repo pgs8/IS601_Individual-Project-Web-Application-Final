@@ -3,11 +3,13 @@ use movieData;
 
 CREATE TABLE IF NOT EXISTS deniroMovies
 (
+    `id` int AUTO_INCREMENT,
     `Year`  INT,
     `Score` INT,
-    `Title` VARCHAR(42) CHARACTER SET utf8
+    `Title` VARCHAR(42) CHARACTER SET utf8,
+    PRIMARY KEY (`id`)
 );
-INSERT INTO deniroMovies
+INSERT INTO deniroMovies (Year, Score, Title)
 VALUES (1968, 86, ' "Greetings"'),
        (1970, 17, ' "Bloody Mama"'),
        (1970, 73, ' "Hi, Mom!"'),
