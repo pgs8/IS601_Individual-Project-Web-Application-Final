@@ -109,7 +109,7 @@ def api_edit(movie_id) -> str:
 def api_add() -> str:
     content = request.json
     cursor = mysql.get_db().cursor()
-    input_data = (content['fldTitle'], content['fldYear'], content['fldScore'], movie_id)
+    input_data = (content['fldTitle'], content['fldYear'], content['fldScore'])
     sql_insert_query = """INSERT INTO deniroMovies (Title, Year, Score) VALUES (%s, %s, %s)"""
     cursor.execute(sql_insert_query, input_data)
     mysql.get_db().commit()
@@ -119,6 +119,10 @@ def api_add() -> str:
 
 @app.route('/api/movies/<int:movie_id>', methods=['DELETE'])
 def api_delete(movie_id) -> str:
+    cursor = mysql.get_db().cursor()
+    sql_delete_query = """DELETE FROM deniroMovies WHERE id = %s """
+    cursor.execute(sql_delete_query, movie_id)
+    mysql.get_db().commit()
     resp = Response(status=210, mimetype='application/json')
     return resp
 
