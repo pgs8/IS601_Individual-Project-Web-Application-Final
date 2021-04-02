@@ -117,7 +117,7 @@ def api_add() -> str:
     return resp
 
 
-@app.route('/api/movies/<int:movie_id>', methods=['DELETE'])
+@app.route('/api/v1/movies/<int:movie_id>', methods=['DELETE'])
 def api_delete(movie_id) -> str:
     cursor = mysql.get_db().cursor()
     sql_delete_query = """DELETE FROM deniroMovies WHERE id = %s """
