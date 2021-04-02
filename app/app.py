@@ -93,14 +93,20 @@ def api_retrieve(movie_id) -> str:
     return resp
 
 
-@app.route('/api/v1/movies/', methods=['POST'])
-def api_add() -> str:
-    resp = Response(status=201, mimetype='application/json')
+@app.route('/api/v1/movies/<int:movie_id>', methods=['PUT'])
+def api_edit(movie_id) -> str:
+    cursor = mysql.get_db().cursor()
+    content = request.json
+    input_data = (content['fldTitle'], content['fldYear'], content['fldScore'], movie_id)
+    sql_insert_query = """UPDATE deniroMovies t SET t.Title = %s, t.Year = %s, t.Score = %s WHERE t.id = %s"""
+    cursor.execute(sql_insert_query, input_data)
+    mysql.get_db().commit()
+    resp = Response(status=200, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/movies/<int:movie_id>', methods=['PUT'])
-def api_edit(movie_id) -> str:
+@app.route('/api/v1/movies/', methods=['POST'])
+def api_add() -> str:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
