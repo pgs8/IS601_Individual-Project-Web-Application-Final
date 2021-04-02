@@ -8,3 +8,6 @@ This project is a homework assignment to taeach how to get Pycharm setup with Do
 
 ## PyCharm Database Screenshot
 ![pycharm_database_output](screenshots/pycharmdatabase.png)
+
+## Bootstrap Template Screenshot
+![bootstrap_template](screenshots/bootstraptemplate.png)
