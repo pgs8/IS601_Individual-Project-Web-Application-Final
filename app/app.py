@@ -97,7 +97,7 @@ def api_retrieve(movie_id) -> str:
 def api_edit(movie_id) -> str:
     cursor = mysql.get_db().cursor()
     content = request.json
-    input_data = (content['fldTitle'], content['fldYear'], content['fldScore'], movie_id)
+    input_data = (content['Title'], content['Year'], content['Score'], movie_id)
     sql_insert_query = """UPDATE deniroMovies t SET t.Title = %s, t.Year = %s, t.Score = %s WHERE t.id = %s"""
     cursor.execute(sql_insert_query, input_data)
     mysql.get_db().commit()
@@ -109,7 +109,7 @@ def api_edit(movie_id) -> str:
 def api_add() -> str:
     content = request.json
     cursor = mysql.get_db().cursor()
-    input_data = (content['fldTitle'], content['fldYear'], content['fldScore'])
+    input_data = (content['Title'], content['Year'], content['Score'])
     sql_insert_query = """INSERT INTO deniroMovies (Title, Year, Score) VALUES (%s, %s, %s)"""
     cursor.execute(sql_insert_query, input_data)
     mysql.get_db().commit()
