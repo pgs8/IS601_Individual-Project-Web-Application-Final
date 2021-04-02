@@ -5,3 +5,6 @@ This project is a homework assignment to taeach how to get Pycharm setup with Do
 
 ## Postman Screenshot
 ![postman_request_output](screenshots/postman.png)
+
+## PyCharm Database Screenshot
+![pycharm_database_output](screenshots/pycharmdatabase.png)
