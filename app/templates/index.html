@@ -13,7 +13,7 @@
     <tr>
         <td>{{ movie.Year }}</td>
         <td>{{ movie.Score }}</td>
-        <td>{{ movie.Title }}</td>
+        <td><a href="view/{{ movie.id }}">{{ movie.Title }}</a></td>
     </tr>
     {% endfor %}
     </tbody>
