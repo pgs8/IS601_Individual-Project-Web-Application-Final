@@ -1,7 +1,10 @@
 from typing import List, Dict
 import mysql.connector
 import simplejson as json
-from flask import Flask, Response, render_template
+from flask import Flask, Response, redirect
+from flask import render_template
+from flaskext.mysql import MySQL
+from pymysql.cursors import DictCursor
 
 app = Flask(__name__)
 
